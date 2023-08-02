@@ -279,11 +279,29 @@
 
     {% sections 'header-group' %}
 
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
+    {% if template.name != "index" %}
+      <main
+        id="MainContent"
+        class="content-for-layout focus-none"
+        role="main"
+        tabindex="-1">
+        {{ content_for_layout }}
+      </main>
 
-    {% sections 'footer-group' %}
+      {% sections 'footer-group' %}
+
+    {% else %}
+
+      <main
+        id="MainContent"
+        class="content-for-layout focus-none data-snap"
+        role="main"
+        tabindex="-1">
+        {{ content_for_layout }}
+        {% sections 'footer-group' %}
+      </main>
+
+    {% endif %}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
